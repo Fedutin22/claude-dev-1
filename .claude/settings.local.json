@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:cloudurable.com)",
+      "Bash(node --version:*)",
+      "Bash(claude --version:*)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)",
+      "Read(//c/Users/denis/**)",
+      "Bash(git rev-parse:*)",
+      "Bash(gh --version:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
