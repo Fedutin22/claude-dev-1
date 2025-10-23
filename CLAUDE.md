@@ -11,11 +11,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Claude Code MUST perform these actions at the start of EVERY session:**
 
 1. **Create or update `claude-actions.md`** with current session header
-2. **Verify all required files exist** (README.md, credentials.md template, etc.)
+2. **Verify all required files exist** (README.md, architecture.md, etc.)
 3. **Confirm logging structure is in place** and functional
 4. **Read and acknowledge these instructions** by stating "CLAUDE.md instructions loaded and acknowledged"
 5. **Initialize session log** with timestamp and goals
-6. **MANDATORY: Follow version folder structure** - ALL new code must be organized in versioned folders
+6. **Use Git for version control** - All code changes tracked via Git commits
 
 **NO OTHER WORK SHALL PROCEED UNTIL THIS CHECKLIST IS COMPLETE**
 
@@ -37,47 +37,29 @@ Documentation/guidance repository - contains operational procedures rather than 
   - Quality assurance processes
 
 ### Development Workflow
-This project requires strict version management for all code development. Focus on:
+This project uses Git for version control. Focus on:
 1. Following the logging and documentation standards outlined below
-2. **MANDATORY: Using version folder structure for ALL code development**
+2. **MANDATORY: Using Git commits for ALL code changes**
 3. Maintaining file organization as specified
 4. Ensuring security procedures are followed
+5. Writing descriptive commit messages that explain the "why" not just the "what"
 
-### Version Folder Structure (MANDATORY)
-**ALL Python scripts and code development MUST follow this structure:**
+### Git Version Control (MANDATORY)
+**ALL code development MUST be tracked via Git:**
 
-```
-project-root/
-├── v1_initial_implementation/          # First iteration with descriptive name
-│   ├── scraper_3dexport.py            # Original script name
-│   ├── output_file.csv                # CSV outputs
-│   └── output_file.xlsx               # Excel outputs
-├── v2_woocommerce_integration/         # Second iteration with git-style description
-│   ├── scraper_3dexport.py            # Same script name maintained
-│   ├── woocommerce_uploader.py        # Additional scripts as needed
-│   ├── improved_output.csv            # Corresponding outputs
-│   └── improved_output.xlsx
-├── v3_enhanced_features/               # Third iteration with descriptive name
-│   ├── scraper_3dexport.py            # Original name preserved
-│   └── ...
-├── v4_fixed_pricing_bug/               # Fourth iteration - bug fix description
-│   ├── scraper_3dexport.py            # Original name maintained
-│   └── ...
-└── current/                           # Optional: symlink to latest version
-```
+**Git Workflow:**
+1. Make changes to files as needed
+2. Stage changes: `git add <files>`
+3. Commit with descriptive message: `git commit -m "description"`
+4. Push to GitHub: `git push origin main`
 
-**VERSIONING COMPLIANCE REQUIREMENTS:**
+**Commit Message Guidelines:**
+- Use present tense ("Add feature" not "Added feature")
+- Be descriptive and explain the purpose
+- Reference related issues or tasks if applicable
+- Follow git commit best practices
 
-1. **Version folders** must follow format: `v#_descriptive_name` (e.g., `v2_add_authentication`, `v3_fix_memory_leak`)
-2. **Script names** must remain consistent across versions (original filename preserved)
-3. **Descriptive names** should be git commit-style: brief, lowercase with underscores, describing the main change
-4. **EVERY script modification** requires a new version folder with incremented number
-5. **ALL output files** (CSV, Excel, JSON, etc.) must be placed in the same version folder as their generating script
-6. **NO loose files** in the project root except documentation and configuration files
-7. **Version folders must be sequential** (v1, v2, v3, etc.) - no gaps in numbering
-8. **Each version folder** must contain the complete working set of scripts for that iteration
-
-**VIOLATION OF VERSIONING = IMMEDIATE COMPLIANCE FAILURE**
+**IMPORTANT: Git replaces the need for version folders - all history is tracked in Git**
 
 ---
 
@@ -91,6 +73,64 @@ project-root/
 4. **Maintain security** of credentials and sensitive information
 5. **Provide clear communication** about progress and issues
 6. **NEVER USE EMOJIS** in any code, documentation, or communication
+
+## Error Handling and Troubleshooting
+
+### CRITICAL: Always Check Logs First - NEVER Start from Scratch
+
+**MANDATORY RULE: Before doing ANY work, especially when resuming a session or encountering issues:**
+
+1. **READ `claude-actions.md` COMPLETELY** - This is your changelog/memory
+   - See what has already been done
+   - Understand the current state of the project
+   - Review previous errors and solutions
+   - Check what was working and what wasn't
+   - **DO NOT re-do work that's already completed**
+
+2. **Check Git history**: `git log --oneline -10`
+   - See recent commits
+   - Understand what changed and when
+   - Identify the current state of the codebase
+
+3. **Review existing files** before creating new ones
+   - Use `ls` or file tree to see what exists
+   - Read existing files to understand current implementation
+   - **NEVER recreate files that already exist**
+
+### When Errors Occur
+
+**MANDATORY PROCEDURE:**
+
+1. **FIRST: Check `claude-actions.md`** - This file serves as the complete changelog and may contain:
+   - Recent changes that caused the error
+   - Known issues and their solutions
+   - Context about what was recently modified
+   - Previous error resolutions
+   - **What was already tried and what worked/didn't work**
+
+2. **Log the error immediately** in `claude-actions.md`:
+   - Full error message and stack trace
+   - What action triggered the error
+   - Files or components involved
+   - Timestamp of occurrence
+
+3. **Analyze the error**:
+   - Review recent changes in `claude-actions.md`
+   - Check git history: `git log --oneline`
+   - Identify what changed before the error appeared
+   - **Check if this error was encountered and solved before**
+
+4. **Document the solution**:
+   - Log attempted fixes in `claude-actions.md`
+   - Document the working solution
+   - Add prevention measures for the future
+
+**CRITICAL RULES:**
+- `claude-actions.md` is your changelog AND your memory
+- ALWAYS read it before starting ANY work
+- NEVER redo work that's already been completed
+- NEVER recreate files without checking if they exist
+- Git history is your version control - use it!
 
 ## Logging Requirements
 
@@ -156,14 +196,14 @@ Create and maintain a detailed log file in the project root with the following s
 3. **Check security compliance** - no credentials exposed
 4. **Confirm next steps** are logged and clear
 5. **Report any blockers** immediately
-6. **VERIFY VERSION FOLDER COMPLIANCE** - all new code in proper version folders
+6. **Consider Git commit** - commit logical units of work
 
 **After every 10 actions or 30 minutes (whichever comes first):**
 
 1. **Complete progress summary** in action log
 2. **Reassess goals** and adjust if needed
 3. **Review file organization** compliance
-4. **AUDIT VERSION FOLDER STRUCTURE** - ensure no loose Python files in root
+4. **Create Git commit** - commit completed work with descriptive message
 5. **Update session status** and timeline estimates
 
 **FAILURE TO PERFORM CHECKPOINTS VIOLATES THESE INSTRUCTIONS**
@@ -299,45 +339,36 @@ Ensure these files exist and are maintained:
 
 ```
 project-root/
-├── claude-actions.md                    # Detailed action log
-├── README.md                            # Main project documentation
+├── .git/                                # Git repository (version control)
+├── .gitignore                           # Git exclusions
 ├── CLAUDE.md                            # This instruction file
+├── README.md                            # Main project documentation
+├── architecture.md                      # System architecture documentation
+├── claude-actions.md                    # Detailed action log (CHANGELOG)
 ├── credentials.md                       # Credential documentation (gitignored)
 ├── .env.example                         # Environment template
-├── .gitignore                           # Includes credentials.md
-├── CHANGELOG.md                         # Version history
-├── v1_initial_implementation/           # Version 1 with descriptive name (MANDATORY)
-│   ├── main_script.py                   # Primary script (original name preserved)
-│   ├── output.csv                       # Generated CSV files
-│   └── output.xlsx                      # Generated Excel files
-├── v2_add_database_support/             # Version 2 with git-style description (MANDATORY)
-│   ├── main_script.py                   # Same script name maintained
-│   └── ...                              # Additional files as needed
-├── v3_fix_memory_leak/                  # Version 3 with bug fix description (MANDATORY)
-│   ├── main_script.py                   # Original name preserved
-│   └── ...
-├── v4_implement_caching/                # Version 4 with feature description (MANDATORY)
-│   └── ...
-├── docs/
-│   ├── architecture.md                  # System design
+├── src/                                 # Source code (if applicable)
+│   ├── scripts/                         # Python/JS scripts
+│   └── utils/                           # Utility functions
+├── docs/                                # Additional documentation
 │   ├── deployment.md                    # Deployment guide
 │   └── troubleshooting.md               # Common issues
-└── logs/
-    ├── error.log                        # Application errors
-    └── access.log                       # Access logs
+├── tests/                               # Test files
+└── output/                              # Generated outputs (gitignored)
+    ├── data.csv                         # CSV outputs
+    └── results.xlsx                     # Excel outputs
 ```
 
-**CRITICAL: Version folders (v#_descriptive_name/) are MANDATORY for ALL code development**
+**IMPORTANT: Use Git for version control - all changes tracked via commits**
 
 ### File Naming Conventions
 
-1. **Version folders**: Use format `v#_descriptive_name` (e.g., `v1_initial_implementation`, `v3_fix_pricing_bug`)
-2. **Python scripts**: Preserve original names across versions (e.g., `scraper.py` stays `scraper.py` in all versions)
-3. **Documentation files**: Use kebab-case (`action-log.md`)
-4. **Time-sensitive logs**: Include dates (`2024-03-15-deployment.md`)
-5. **Descriptive naming**: Be clear about purpose (`database-migration-notes.md`)
-6. **Group related files** in appropriate directories
-7. **Descriptive names style**: Git commit-style, lowercase with underscores, brief but clear
+1. **Python scripts**: Use snake_case (`data_processor.py`, `web_scraper.py`)
+2. **Documentation files**: Use kebab-case (`action-log.md`, `deployment-guide.md`)
+3. **Time-sensitive logs**: Include dates (`2025-10-23-deployment.md`)
+4. **Descriptive naming**: Be clear about purpose (`database-migration-notes.md`)
+5. **Group related files** in appropriate directories (src/, docs/, tests/)
+6. **Configuration files**: Use standard names (`.env`, `config.json`, `.gitignore`)
 
 ## Communication and Reporting
 
