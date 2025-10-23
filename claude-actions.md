@@ -249,10 +249,120 @@ Both README.md and architecture.md are living documents that will be updated thr
 
 ---
 
+## Session: 2025-10-23 - CLAUDE.md Updates and Workflow Improvements
+
+### Goals
+- [x] Add CLAUDE.md to repository
+- [x] Update CLAUDE.md to use Git instead of version folders
+- [x] Add critical guidance about checking logs before work
+- [x] Emphasize never starting from scratch
+
+### Actions Performed
+- [x] Copied CLAUDE.md from Desktop to project repository
+  - **Status:** Completed
+  - **Result:** CLAUDE.md successfully added to project
+  - **Files Modified:** CLAUDE.md (created)
+  - **Command:** `cp "../CLAUDE.md" "CLAUDE.md"`
+  - **Time:** Session progress
+
+- [x] Updated README.md to reference CLAUDE.md
+  - **Status:** Completed
+  - **Result:** Added CLAUDE.md to documentation section with emphasis on mandatory procedures
+  - **Files Modified:** README.md
+  - **Time:** Session progress
+  - **Changes:** Added CLAUDE.md to key documentation files, updated recent additions
+
+- [x] Initial commit of CLAUDE.md
+  - **Status:** Completed
+  - **Result:** CLAUDE.md committed and pushed to GitHub
+  - **Command:** `git commit -m "Add CLAUDE.md operational procedures"`
+  - **Time:** Session progress
+
+- [x] Updated CLAUDE.md per user request
+  - **Status:** Completed
+  - **Result:** Major improvements to CLAUDE.md workflow
+  - **Files Modified:** CLAUDE.md
+  - **Time:** Session progress
+  - **Changes Made:**
+    1. Removed mandatory version folder structure (v1_*, v2_*, etc.)
+    2. Replaced with Git-based version control workflow
+    3. Added CRITICAL section: "Always Check Logs First - NEVER Start from Scratch"
+    4. Added mandatory procedure to read claude-actions.md before ANY work
+    5. Emphasized claude-actions.md as changelog AND memory
+    6. Added error handling guidance to check logs for previous solutions
+    7. Updated file organization to use src/, docs/, tests/ structure
+    8. Added rules: "NEVER redo work that's already completed"
+    9. Added rules: "NEVER recreate files without checking if they exist"
+
+### Code Changes
+- **File:** `CLAUDE.md`
+  - **Type:** Created, then Modified
+  - **Purpose:** Provide mandatory operational procedures for Claude Code
+  - **Impact:** Establishes workflow standards, logging requirements, and prevents duplicate work
+  - **Lines:** [Added: 483, Modified: 98 insertions, 67 deletions in update]
+  - **Key Sections:**
+    - Session startup checklist
+    - Error handling and troubleshooting (with log-first approach)
+    - Logging requirements
+    - Documentation management
+    - Security procedures
+    - Git-based version control workflow
+
+- **File:** `README.md`
+  - **Type:** Modified
+  - **Purpose:** Reference CLAUDE.md in documentation
+  - **Impact:** Makes CLAUDE.md discoverable and emphasizes its mandatory nature
+  - **Lines:** [Added: 2, Modified: 1]
+
+### Issues Encountered
+- None - All updates completed successfully
+
+### Tests & Validation
+- [x] CLAUDE.md successfully copied to repository
+- [x] README.md properly references CLAUDE.md
+- [x] Git commits created with descriptive messages
+- [x] All changes pushed to GitHub successfully
+- [x] Version folder references removed from CLAUDE.md
+- [x] Critical "check logs first" guidance added
+
+### Session Summary
+
+**CLAUDE.md Workflow Improvements Completed**
+
+**What was accomplished:**
+1. Added CLAUDE.md to repository with comprehensive operational procedures
+2. Updated workflow to use Git instead of manual version folders
+3. Added CRITICAL guidance to always check logs before starting work
+4. Emphasized claude-actions.md as the changelog AND memory
+5. Added mandatory rules to prevent duplicate work and file recreation
+
+**Key Improvements:**
+- **Git-based versioning**: All version control through Git commits (no more v1_*, v2_* folders)
+- **Log-first approach**: MUST read claude-actions.md before ANY work
+- **Error prevention**: Check logs for previous solutions before debugging
+- **Memory preservation**: Never redo work that's already completed
+- **File awareness**: Never recreate files without checking if they exist
+
+**Critical New Rules in CLAUDE.md:**
+1. "READ claude-actions.md COMPLETELY before doing ANY work"
+2. "DO NOT re-do work that's already completed"
+3. "NEVER recreate files that already exist"
+4. "claude-actions.md is your changelog AND your memory"
+5. "ALWAYS read it before starting ANY work"
+
+**Repository Status:**
+- **Branch:** main
+- **Latest Commit:** "Update CLAUDE.md: Replace version folders with Git workflow"
+- **Files Modified:** CLAUDE.md (major updates), README.md (minor updates)
+- **All Changes Pushed:** Yes
+
+---
+
 ## Next Steps
 1. Documentation files (README.md and architecture.md) will be updated throughout sessions
 2. Git integration is fully operational for version control
-3. Ready for code development using mandatory version folder structure (v#_descriptive_name/)
+3. Ready for code development using Git-based workflow (no version folders needed)
 4. All future changes will be committed and tracked via Git
+5. **ALWAYS check claude-actions.md before starting any new work**
 
 ---
