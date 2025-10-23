@@ -602,3 +602,4 @@ Create incident reports including:
 ---
 
 This comprehensive instruction set ensures consistent, thorough documentation and logging practices for all Claude Code operations.
+- always use all available tools and/or mcp servers to achieve a goal
