@@ -125,12 +125,102 @@ This project uses Git for version control. Focus on:
    - Document the working solution
    - Add prevention measures for the future
 
+5. **If error persists and root cause is unclear**:
+   - **Add manual debugging/logging to the code**
+   - Insert print/console.log statements at key points
+   - Use debugging functions similar to PHP Symfony's `dd()` (dump and die)
+   - Examples:
+     - Python: `print(f"DEBUG: variable = {variable}")` or `import pdb; pdb.set_trace()`
+     - JavaScript: `console.log('DEBUG:', variable)` or `debugger;`
+     - Add timestamps to logs: `print(f"[{datetime.now()}] DEBUG: {variable}")`
+   - Log function entry/exit points
+   - Log variable states before/after transformations
+   - **Document what debugging code was added and why**
+
 **CRITICAL RULES:**
 - `claude-actions.md` is your changelog AND your memory
 - ALWAYS read it before starting ANY work
 - NEVER redo work that's already been completed
 - NEVER recreate files without checking if they exist
 - Git history is your version control - use it!
+- When stuck, add manual logging/debugging to understand program flow
+
+## Debugging Strategies
+
+### When Standard Troubleshooting Doesn't Work
+
+If checking logs and git history doesn't reveal the issue, use manual debugging:
+
+### Debug Logging Techniques
+
+**Python Examples:**
+```python
+# Simple debug print
+print(f"DEBUG: Processing item {item_id} at line 42")
+
+# With timestamp
+from datetime import datetime
+print(f"[{datetime.now().strftime('%H:%M:%S')}] DEBUG: user_data = {user_data}")
+
+# Dump and die (like PHP dd())
+import sys
+def dd(*args):
+    for arg in args:
+        print(f"DEBUG DUMP: {arg}")
+    sys.exit(1)
+
+# Interactive debugger
+import pdb; pdb.set_trace()  # Program pauses here for inspection
+
+# Pretty print complex objects
+import pprint
+pprint.pprint(complex_object)
+```
+
+**JavaScript/Node.js Examples:**
+```javascript
+// Simple debug log
+console.log('DEBUG: Processing item', itemId, 'at line 42');
+
+// With timestamp
+console.log(`[${new Date().toISOString()}] DEBUG: userData =`, userData);
+
+// Dump and die equivalent
+const dd = (...args) => {
+    console.log('DEBUG DUMP:', ...args);
+    process.exit(1);
+};
+
+// Debugger breakpoint
+debugger;  // Program pauses here if DevTools open
+
+// Pretty print
+console.dir(complexObject, { depth: null, colors: true });
+```
+
+### Debugging Workflow
+
+1. **Add logging at critical points**:
+   - Function entry: `print(f"ENTER: functionName({args})")`
+   - Function exit: `print(f"EXIT: functionName -> {result}")`
+   - Before/after data transformation
+   - Inside loops to track iterations
+   - Error handlers to capture exception details
+
+2. **Use structured debugging**:
+   - Add a `DEBUG` constant/flag to enable/disable debug output
+   - Prefix all debug messages with "DEBUG:" for easy filtering
+   - Include file name and line number when possible
+
+3. **Document debugging additions**:
+   - Log in `claude-actions.md` what debugging code was added
+   - Note what you're trying to investigate
+   - Record findings from debug output
+   - **Remove or disable debug code before final commit** (or keep behind DEBUG flag)
+
+4. **Git commit debugging code separately**:
+   - Commit with message like "Add debugging for [issue]"
+   - Makes it easy to remove later: `git revert <commit>`
 
 ## Logging Requirements
 
