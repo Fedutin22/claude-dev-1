@@ -19,6 +19,8 @@ This repository serves as a comprehensive workspace for Claude Code development 
 - **2025-10-23:** Initial repository setup
 - **2025-10-23:** Git MCP server configuration
 - **2025-10-23:** GitHub repository connection established
+- **2025-10-23:** Added CLAUDE.md with mandatory operational procedures
+- **2025-10-23:** Created comprehensive documentation (README.md, architecture.md)
 
 ## Installation
 
@@ -107,7 +109,7 @@ When developing code:
 ### Key Documentation Files
 - **README.md** (this file) - Project overview and usage
 - **architecture.md** - System design and architecture
-- **CLAUDE.md** - Operational procedures for Claude Code
+- **CLAUDE.md** - **MANDATORY operational procedures for Claude Code** (contains all required workflows, logging standards, and compliance rules)
 - **claude-actions.md** - Detailed session logs
 
 ### Documentation Update Policy
