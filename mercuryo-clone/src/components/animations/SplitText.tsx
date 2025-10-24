@@ -73,7 +73,7 @@ export default function SplitText({
     // Set up animation based on direction
     const inners = container.querySelectorAll("span > span");
 
-    let fromVars: any = { opacity: 0 };
+    const fromVars: { opacity: number; y?: number; x?: number; scale?: number } = { opacity: 0 };
 
     switch (animateFrom) {
       case "bottom":

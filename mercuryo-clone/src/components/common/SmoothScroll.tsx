@@ -5,6 +5,13 @@ import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Extend Window interface for Lenis
+declare global {
+  interface Window {
+    lenis?: Lenis;
+  }
+}
+
 /**
  * SmoothScroll component using Lenis for smooth scrolling
  * Integrates with GSAP ScrollTrigger for scroll-based animations
@@ -45,7 +52,7 @@ export default function SmoothScroll({
 
     // Expose lenis instance globally for programmatic scrolling
     if (typeof window !== "undefined") {
-      (window as any).lenis = lenis;
+      window.lenis = lenis;
     }
 
     // Cleanup
@@ -55,7 +62,7 @@ export default function SmoothScroll({
         lenis.raf(time * 1000);
       });
       if (typeof window !== "undefined") {
-        delete (window as any).lenis;
+        delete window.lenis;
       }
     };
   }, []);
