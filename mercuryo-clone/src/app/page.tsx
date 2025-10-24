@@ -1,6 +1,6 @@
 import { HeroCarousel } from "@/components/hero";
 import { Container, Section } from "@/components/layout";
-import { FadeIn } from "@/components/animations";
+import { FadeIn, SplitText } from "@/components/animations";
 
 export default function Home() {
   return (
@@ -8,11 +8,13 @@ export default function Home() {
       {/* Hero Carousel */}
       <HeroCarousel />
 
-      {/* Test Section 1 - To demonstrate smooth scrolling and fade-in */}
+      {/* Test Section 1 - With split-text animation */}
       <Section spacing="desktop" id="features">
         <Container>
-          <FadeIn>
-            <h2 className="mb-8 text-center text-4xl font-bold">Our Features</h2>
+          <SplitText className="mb-8 text-center text-4xl font-bold">
+            Our Features
+          </SplitText>
+          <FadeIn delay={0.5}>
             <p className="mx-auto max-w-3xl text-center text-lg text-gray-600">
               Experience the power of seamless crypto payments with our cutting-edge
               infrastructure. Built for scale, designed for simplicity.
@@ -21,11 +23,13 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Test Section 2 */}
+      {/* Test Section 2 - With character split animation */}
       <Section spacing="desktop" background="light" id="about">
         <Container>
-          <FadeIn delay={0.2}>
-            <h2 className="mb-8 text-center text-4xl font-bold">About Mercuryo</h2>
+          <SplitText className="mb-8 text-center text-4xl font-bold" type="chars" stagger={0.03}>
+            About Mercuryo
+          </SplitText>
+          <FadeIn delay={0.8}>
             <p className="mx-auto max-w-3xl text-center text-lg text-gray-600">
               We're building the future of web3 payments. Trusted by 200+ leading
               companies worldwide, processing millions in transactions every month.
