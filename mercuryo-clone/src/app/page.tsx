@@ -2,6 +2,7 @@ import { HeroCarousel } from "@/components/hero";
 import { Container, Section } from "@/components/layout";
 import { FadeIn, SplitText } from "@/components/animations";
 import { Marquee } from "@/components/common";
+import { StatsCarousel } from "@/components/stats";
 
 export default function Home() {
   return (
@@ -62,6 +63,16 @@ export default function Home() {
             </div>
           </FadeIn>
         </Container>
+      </Section>
+
+      {/* Stats Section */}
+      <Section spacing="desktop" background="light" id="stats">
+        <Container>
+          <SplitText className="mb-12 text-center text-3xl font-bold">
+            Our Impact in Numbers
+          </SplitText>
+        </Container>
+        <StatsCarousel />
       </Section>
 
       {/* Marquee Section - Partner Logos */}
