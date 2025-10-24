@@ -1,6 +1,7 @@
 import { HeroCarousel } from "@/components/hero";
 import { Container, Section } from "@/components/layout";
 import { FadeIn, SplitText } from "@/components/animations";
+import { Marquee } from "@/components/common";
 
 export default function Home() {
   return (
@@ -61,6 +62,39 @@ export default function Home() {
             </div>
           </FadeIn>
         </Container>
+      </Section>
+
+      {/* Marquee Section - Partner Logos */}
+      <Section spacing="desktop" id="partners">
+        <Container>
+          <SplitText className="mb-12 text-center text-3xl font-bold">
+            Trusted by Leading Web3 Companies
+          </SplitText>
+        </Container>
+        <Marquee speed={1.5} className="py-8">
+          <div className="flex gap-12 px-6">
+            {["Binance", "Coinbase", "MetaMask", "Trust Wallet", "Ledger", "Uniswap", "OpenSea", "Polygon"].map((company) => (
+              <div
+                key={company}
+                className="flex h-20 w-40 items-center justify-center rounded-lg border border-gray-200 bg-white px-6 text-xl font-semibold text-gray-700 shadow-sm"
+              >
+                {company}
+              </div>
+            ))}
+          </div>
+        </Marquee>
+        <Marquee speed={1} direction="right" className="py-8">
+          <div className="flex gap-12 px-6">
+            {["Bitcoin", "Ethereum", "USDT", "BNB", "Solana", "Cardano", "XRP", "Polkadot"].map((crypto) => (
+              <div
+                key={crypto}
+                className="flex h-20 w-40 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 px-6 text-xl font-semibold text-white shadow-md"
+              >
+                {crypto}
+              </div>
+            ))}
+          </div>
+        </Marquee>
       </Section>
 
       {/* Test Section 4 */}
